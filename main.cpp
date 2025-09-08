@@ -227,6 +227,8 @@ void usercontrol(void) {
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
+    WheelPiston.set(false);
+
     LeftBack.setVelocity(100, percent);
     LeftMiddle.setVelocity(100, percent);
     LeftFront.setVelocity(100, percent);
@@ -259,16 +261,7 @@ void usercontrol(void) {
       IntakeMiddle.spin(reverse);
       IntakeTop.spin(reverse);
     }
-    else{
-      IntakeBottom.stop();
-      IntakeMiddle.stop();
-      IntakeTop.stop();
-    }
-
-
-
-
-    if(Controller.ButtonL1.pressing()){
+    else if(Controller.ButtonL1.pressing()){
       IntakeBottom.spin(reverse);
       IntakeMiddle.spin(forward);
       IntakeTop.spin(reverse);
@@ -281,9 +274,20 @@ void usercontrol(void) {
     else{
       IntakeBottom.stop();
       IntakeMiddle.stop();
-     
+      IntakeTop.stop();
     }
 
+
+
+
+
+    if(Controller.ButtonUp.pressing()){
+      BallStop.on();
+    }
+
+    if(Controller.ButtonDown.pressing()){
+      BallStop.off();
+    }
 
 
     if(Controller.ButtonX.pressing()){

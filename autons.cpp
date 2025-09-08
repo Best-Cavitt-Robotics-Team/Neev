@@ -134,7 +134,7 @@ void blue_right() {
   IntakeBottom.setVelocity(100, percent);
   IntakeMiddle.setVelocity(100, percent);
   BallStop.set(false);
-  WheelRetract.set(true);
+  WheelPiston.set(true);
   //drive_test();
   chassis.drive_distance(30);
   wait(500, msec);
@@ -175,7 +175,7 @@ void blue_left(){
   IntakeTop.setVelocity(100, percent);
   IntakeBottom.setVelocity(100, percent);
   IntakeMiddle.setVelocity(100, percent);
-  WheelRetract.set(true);
+  WheelPiston.set(true);
   BallStop.set(false);
   //drive_test();
   chassis.drive_distance(30);

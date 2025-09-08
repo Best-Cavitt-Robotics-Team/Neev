@@ -27,7 +27,7 @@ motor IntakeTop = motor(PORT8, ratio18_1, false);
 led Scraper1(Brain.ThreeWirePort.A);
 led Scraper2(Brain.ThreeWirePort.B);
 led BallStop(Brain.ThreeWirePort.C);
-led WheelRetract(Brain.ThreeWirePort.D);
+led WheelPiston(Brain.ThreeWirePort.D);
 //Add your devices below, and don't forget to do the same in robot-config.h:
 
 inertial Inertial = inertial(PORT14);
