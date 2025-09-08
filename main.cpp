@@ -238,13 +238,13 @@ void usercontrol(void) {
     RightFront.setVelocity(100, percent);
 
 
-    LeftBack.spin(forward, Controller.Axis3.position(), percent);
-    LeftMiddle.spin(forward, Controller.Axis3.position(), percent);
-    LeftFront.spin(forward, Controller.Axis3.position(), percent);
+    LeftBack.spin(forward, Controller.Axis3.position(), volt); //if doesnt work change volt to percent
+    LeftMiddle.spin(forward, Controller.Axis3.position(), volt);
+    LeftFront.spin(forward, Controller.Axis3.position(), volt);
 
-    RightBack.spin(forward, Controller.Axis2.position(), percent);
-    RightMiddle.spin(forward, Controller.Axis2.position(), percent);
-    RightFront.spin(forward, Controller.Axis2.position(), percent);
+    RightBack.spin(forward, Controller.Axis2.position(), volt);
+    RightMiddle.spin(forward, Controller.Axis2.position(), volt);
+    RightFront.spin(forward, Controller.Axis2.position(), volt);
 
 
     IntakeBottom.setVelocity(100, percent);
