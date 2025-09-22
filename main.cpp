@@ -238,14 +238,37 @@ void usercontrol(void) {
     RightFront.setVelocity(100, percent);
 
 
-    LeftBack.spin(forward, Controller.Axis3.position(), volt); //if doesnt work change volt to percent
-    LeftMiddle.spin(forward, Controller.Axis3.position(), volt);
-    LeftFront.spin(forward, Controller.Axis3.position(), volt);
+    // LeftBack.spin(forward, Controller.Axis3.position(), volt); //if doesnt work change volt to percent
+    // LeftMiddle.spin(forward, Controller.Axis3.position(), volt);
+    // LeftFront.spin(forward, Controller.Axis3.position(), volt);
 
-    RightBack.spin(forward, Controller.Axis2.position(), volt);
-    RightMiddle.spin(forward, Controller.Axis2.position(), volt);
-    RightFront.spin(forward, Controller.Axis2.position(), volt);
+    // RightBack.spin(forward, Controller.Axis2.position(), volt);
+    // RightMiddle.spin(forward, Controller.Axis2.position(), volt);
+    // RightFront.spin(forward, Controller.Axis2.position(), volt);
 
+    double turnVal = Controller.Axis1.position(percent);
+    double forwardVal = Controller.Axis3.position(percent);
+
+    double turnVolts = turnVal * 0.12;
+    double forwadsVolts = forwardVal * 0.12;
+
+    
+    LeftBack.spin(forward, (Controller.Axis3.position()+Controller.Axis1.position()), percent); //if doesnt work change volt to percent
+    LeftMiddle.spin(forward, (Controller.Axis3.position()+Controller.Axis1.position()), volt);
+    LeftFront.spin(forward, (Controller.Axis3.position()+Controller.Axis1.position()), percent);
+
+    RightBack.spin(forward, (Controller.Axis3.position()-Controller.Axis1.position()), percent);
+    RightMiddle.spin(forward, (Controller.Axis3.position()-Controller.Axis1.position()), volt);
+    RightFront.spin(forward, (Controller.Axis3.position()-Controller.Axis1.position()), percent);
+
+
+    // LeftBack.spin(forward, forwadsVolts-turnVolts, volt); //if doesnt work change volt to percent
+    // LeftMiddle.spin(forward, forwadsVolts-turnVolts, volt);
+    // LeftFront.spin(forward, forwadsVolts-turnVolts, volt);
+
+    // RightBack.spin(forward, forwadsVolts+turnVolts, volt);
+    // RightMiddle.spin(forward, forwadsVolts+turnVolts, volt);
+    // RightFront.spin(forward, forwadsVolts+turnVolts, volt);
 
     IntakeBottom.setVelocity(100, percent);
     IntakeMiddle.setVelocity(100, percent);
@@ -305,7 +328,7 @@ void usercontrol(void) {
 
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
-    // chassis.control_tank();
+    //chassis.control_tank();
 
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.

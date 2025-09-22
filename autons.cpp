@@ -17,7 +17,7 @@ void default_constants(){
   chassis.set_swing_constants(12, .3, .001, 2, 15);
 
   // Each exit condition set is in the form of (settle_error, settle_time, timeout).
-  chassis.set_drive_exit_conditions(1.5, 300, 5000);
+  chassis.set_drive_exit_conditions(1.5, 300, 3000);
   chassis.set_turn_exit_conditions(1, 300, 3000);
   chassis.set_swing_exit_conditions(1, 300, 3000);
 }
@@ -137,28 +137,30 @@ void blue_right() {
   WheelPiston.set(true);
   //drive_test();
   chassis.drive_distance(30);
-  wait(500, msec);
+  wait(200, msec);
   //turn in the direction of the goal
   chassis.turn_to_angle(90);
-  wait(500, msec);
   Scraper1.set(true);
   Scraper2.set(true);
-  wait(500, msec);
+  wait(200, msec);
   IntakeBottom.spin(reverse);
   IntakeMiddle.spin(forward);
-  chassis.drive_distance(13.75);
-  
-  wait(2000, msec); //this is how long is spins at the loader
-  Scraper1.set(false);
-  Scraper2.set(false);
+
+  chassis.drive_distance(15);
+  wait(100, msec);
+  chassis.drive_distance(-3);
+  chassis.drive_distance(3);
+  wait(350, msec);
   IntakeBottom.stop();
   IntakeMiddle.stop();
-    //run intake
+  //run intake
   chassis.drive_distance(-13);
+  Scraper1.set(false);
+  Scraper2.set(false);
 
   // IntakeTop.stop();
   chassis.turn_to_angle(-93);
-  chassis.drive_distance(17.25);
+  chassis.drive_distance(15);
   //run intake
   IntakeBottom.spin(forward);
   IntakeMiddle.spin(reverse);
@@ -167,49 +169,108 @@ void blue_right() {
   IntakeBottom.spin(reverse);
   IntakeMiddle.spin(forward);
   IntakeTop.spin(forward);
-  wait(3000, msec);
+  wait(1000, msec);
 
+  chassis.drive_distance(-3);
+  chassis.turn_to_angle(180);
+  chassis.drive_distance(16);
+  chassis.turn_to_angle(-130);
+  IntakeBottom.spin(reverse);
+  IntakeMiddle.spin(forward);
+  IntakeTop.spin(reverse);
+  chassis.drive_distance(12);
+  wait(150, msec);
+  chassis.drive_distance(14);
+  chassis.turn_to_angle(-135);
+  BallStop.set(true);
+  IntakeBottom.spin(forward);
+  IntakeMiddle.spin(reverse);
+  IntakeTop.spin(forward);
+  wait(100, msec);
+  IntakeBottom.spin(forward);
+  IntakeMiddle.spin(reverse);
+  chassis.drive_distance(5);
+  // IntakeTop.spin(reverse);
+  WheelPiston.set(false);
 }
 
 void blue_left(){
   IntakeTop.setVelocity(100, percent);
   IntakeBottom.setVelocity(100, percent);
   IntakeMiddle.setVelocity(100, percent);
-  WheelPiston.set(true);
   BallStop.set(false);
+  WheelPiston.set(true);
   //drive_test();
   chassis.drive_distance(30);
-  wait(500, msec);
+  wait(200, msec);
   //turn in the direction of the goal
   chassis.turn_to_angle(-90);
   Scraper1.set(true);
   Scraper2.set(true);
-  wait(500, msec);
+  wait(200, msec);
   IntakeBottom.spin(reverse);
   IntakeMiddle.spin(forward);
-  // IntakeTop.setVelocity(100, percent);
-  chassis.drive_distance(13.75);
-  wait(2000, msec);
-  Scraper1.set(false);
-  Scraper2.set(false);
+  IntakeTop.spin(reverse);
+    // IntakeTop.setVelocity(100, percent);
+  chassis.drive_distance(13.5);
+  wait(100, msec);
+  chassis.drive_distance(-3);
+  chassis.drive_distance(3);
+  wait(350, msec);
   IntakeBottom.stop();
   IntakeMiddle.stop();
   //run intake
   chassis.drive_distance(-13);
+  Scraper1.set(false);
+  Scraper2.set(false);
   // IntakeBottom.setVelocity(100, percent);
   // IntakeMiddle.setVelocity(100, percent);
   // IntakeTop.setVelocity(100, percent);
-  chassis.turn_to_angle(0);
-  wait(100, msec);
-  chassis.turn_to_angle(90);
-  chassis.drive_distance(17.25);
+  // chassis.turn_to_angle(0);
+  wait(50, msec);
+  chassis.turn_to_angle(87);
+  chassis.drive_distance(16);
   //run intake
   IntakeBottom.spin(forward);
   IntakeMiddle.spin(reverse);
   IntakeTop.spin(reverse);
-  wait(150, msec);
+  wait(50, msec);
+
   IntakeBottom.spin(reverse);
   IntakeMiddle.spin(forward);
   IntakeTop.spin(forward);
-  wait(2000, msec);
+  wait(1, sec);
+  // wait(150, msec);
+  // IntakeBottom.spin(reverse);
+  // IntakeMiddle.spin(forward);
+  // IntakeTop.spin(forward);
+  // wait(1250, msec);
+  // IntakeBottom.stop();
+  // IntakeMiddle.stop();
+  // IntakeTop.stop();
+
+  chassis.drive_distance(-3);
+  chassis.turn_to_angle(180);
+  chassis.drive_distance(12);
+  chassis.turn_to_angle(130);
+  IntakeBottom.spin(reverse);
+  IntakeMiddle.spin(forward);
+  IntakeTop.spin(reverse);
+  chassis.drive_distance(10);
+  wait(150, msec);
+  chassis.drive_distance(25);
+  chassis.turn_to_angle(135);
+  BallStop.set(true);
+  IntakeBottom.spin(forward);
+  IntakeMiddle.spin(reverse);
+  IntakeTop.spin(forward);
+  wait(100, msec);
+  IntakeBottom.spin(reverse);
+  IntakeMiddle.spin(forward);
+  IntakeTop.spin(reverse);
+  WheelPiston.set(false);
+   //pick up triangle blocks
+  // wait(150, msec);
+  // IntakeBottom.stop();
+  // IntakeMiddle.stop();
 }

@@ -14,11 +14,11 @@ controller Controller = controller(primary);
 
 motor RightFront = motor(PORT3, ratio6_1, false);
 motor RightMiddle = motor(PORT16, ratio6_1, true);
-motor RightBack = motor(PORT1, ratio6_1, false);
+motor RightBack = motor(PORT9, ratio6_1, false);// in 9 right now
 
 motor LeftFront = motor(PORT17, ratio6_1, true);
 motor LeftMiddle = motor(PORT11, ratio6_1, false);
-motor LeftBack = motor(PORT6, ratio6_1, true);
+motor LeftBack = motor(PORT6, ratio6_1, true); 
 
 motor IntakeBottom = motor(PORT10, ratio6_1, false);
 motor IntakeMiddle = motor(PORT13, ratio18_1, false);
