@@ -64,7 +64,7 @@ PORT14,
 
 //Gyro scale, this is what your gyro reads when you spin the robot 360 degrees.
 //For most cases 360 will do fine here, but this scale factor can be very helpful when precision is necessary.
-360,
+358,
 
 /*---------------------------------------------------------------------------*/
 /*                                  PAUSE!                                   */
@@ -246,19 +246,20 @@ void usercontrol(void) {
     // RightMiddle.spin(forward, Controller.Axis2.position(), volt);
     // RightFront.spin(forward, Controller.Axis2.position(), volt);
 
-    double turnVal = Controller.Axis1.position(percent);
-    double forwardVal = Controller.Axis3.position(percent);
+    // double turnVal = Controller.Axis1.position(percent);
+    // double forwardVal = Controller.Axis3.position(percent);
 
-    double turnVolts = turnVal * 0.12;
-    double forwadsVolts = forwardVal * 0.12;
+    // double turnVolts = turnVal * 0.12;
+    // double forwadsVolts = forwardVal * 0.12;
+
 
     
     LeftBack.spin(forward, (Controller.Axis3.position()+Controller.Axis1.position()), percent); //if doesnt work change volt to percent
-    LeftMiddle.spin(forward, (Controller.Axis3.position()+Controller.Axis1.position()), volt);
+    LeftMiddle.spin(forward, (Controller.Axis3.position()+Controller.Axis1.position()), percent);
     LeftFront.spin(forward, (Controller.Axis3.position()+Controller.Axis1.position()), percent);
 
     RightBack.spin(forward, (Controller.Axis3.position()-Controller.Axis1.position()), percent);
-    RightMiddle.spin(forward, (Controller.Axis3.position()-Controller.Axis1.position()), volt);
+    RightMiddle.spin(forward, (Controller.Axis3.position()-Controller.Axis1.position()), percent);
     RightFront.spin(forward, (Controller.Axis3.position()-Controller.Axis1.position()), percent);
 
 
@@ -293,6 +294,8 @@ void usercontrol(void) {
     else if(Controller.ButtonL2.pressing()){
       IntakeBottom.spin(reverse);
       IntakeMiddle.spin(forward);
+      //IntakeTop.stop(hold);
+      IntakeTop.setStopping(brakeType::hold);
     }
     else{
       IntakeBottom.stop();
@@ -321,6 +324,15 @@ void usercontrol(void) {
     if(Controller.ButtonY.pressing()){
       Scraper1.off();
       Scraper2.off();
+    }
+
+    
+    if(Controller.ButtonA.pressing()){
+      Descore.on();
+    }
+
+    if(Controller.ButtonB.pressing()){
+      Descore.off();
     }
     
     
